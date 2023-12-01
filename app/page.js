@@ -1,7 +1,18 @@
-import Image from 'next/image'
+import { connectDB } from '@/util/database'
 
-export default function Home() {
+export default async function Home() {
+  
+  let client = await connectDB;
+  const db = client.db('CodingAppleSample');
+  let result = await db.collection('post').find().toArray();
+  console.log(result)
+
   return (
-    <div>Hello</div>
+    <div>
+      <main>
+        안녕
+        {/* {result[0]} */}
+      </main>
+    </div>
   )
 }
