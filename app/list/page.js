@@ -1,6 +1,5 @@
 import { connectDB } from '@/util/database'
 import Link from 'next/link';
-import DetailLink from './DetailLink';
 
 export default async function list() {
     
@@ -20,5 +19,5 @@ export default async function list() {
                 </div>
             )}
         </div>
-      )
+    )
 }
