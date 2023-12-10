@@ -12,17 +12,17 @@ export default function ListItem({result}) {
                     </Link>
                     <p>{result.content}</p>
                     <Link href={"/edit/" + result._id}>수정하기✏️</Link>
-                    <span onClick={() => {
+                    <span onClick={(e) => {
                         fetch("/api/deletepost", {
                             method: "DELETE",
                             body: result._id
                         })
-                        .then((res) => {
-                            console.log('deleted')
-                            res.json()
-                        })
-                        .then((data) => {
-                            console.log(data)
+                        .then((res) => res.json())
+                        .then(() => {
+                            e.target.parentElement.style.opacity = 0;
+                            setTimeout(() => {
+                                e.target.parentElement.style.display = 'none';
+                            }, 1000);
                         })                       
                     }}>삭제하기🗑️</span>
                 </div>
